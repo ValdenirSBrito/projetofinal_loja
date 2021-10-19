@@ -32,32 +32,32 @@ app.get("/", (req, res) => {
   })
 });
 
-const lojas = require("./models/loja");
+const loja = require("./models/loja");
 
-app.post("/criar", async (req, res) => {
-  const { nome, descricao, imagem } = req.body;
+// app.post("/criar", async (req, res) => {
+//   const { nome, descricao, imagem } = req.body;
 
-  const loja = await Loja.create({
-    nome,
-    descricao,
-    imagem,
-  });
+//   const loja = await Loja.create({
+//     nome,
+//     descricao,
+//     imagem,
+//   });
 
-  res.render("criar", {
+//   res.render("criar", {
+//     loja,
+//   });
+// });
+
+app.get("/", async (req, res) => {
+  const loja = await Loja.findAll();
+
+  res.render("index", {
     loja,
   });
 });
 
-app.get("/", async (req, res) => {
-  const lojas = await Loja.findAll();
-
-  res.render("index", {
-    lojas,
-  });
-});
-
 app.post("/criar", async (req, res) => {
-  const { nome, descricao, imagem } = req.body;
+  const { nome, descricao, imagem, cnpj, contato, email } = req.body;
 
   if (!nome) {
     res.render("criar", {
@@ -70,16 +70,36 @@ app.post("/criar", async (req, res) => {
       mensagem: "Imagem é obrigatório",
     });
   }
+  if (!cnpj) {
+    res.render("criar", {
+      mensagem: "Nome é obrigatório",
+    });
+  }
+
+  if (!contato) {
+    res.render("criar", {
+      mensagem: "Imagem é obrigatório",
+    });
+  }
+
+    if (!email) {
+      res.render("criar", {
+        mensagem: "Imagem é obrigatório",
+      });
+  }
 
   try {
-    const filme = await Filme.create({
+    const loja = await Loja.create({
       nome,
       descricao,
       imagem,
+      cnpj,
+      contato,
+      email,
     });
 
     res.render("criar", {
-      filme,
+      loja,
     });
   } catch (err) {
     console.log(err);
@@ -93,6 +113,12 @@ app.post("/criar", async (req, res) => {
 app.get("/cadastro", (req, res) => {
   res.render("cadastroLoja", {
     message: "Cadastre sua loja!",
+  });
+});
+
+app.get("/cadastrocliente", (req, res) => {
+  res.render("cadastroCliente", {
+    message: "Cadastre-se!",
   });
 });
 
@@ -114,7 +140,7 @@ app.post("/new", (req, res) => {
   console.log(req.body)
   const novaLoja = ({loja: loja, categoria: categoria, logo: logo, cnpj: cnpj, contato: contato, email: email});
   cadastroLoja.push(novaLoja);
-  message1 = `A loja ${loja} foi cadastrada com sucesso!`;
+  message = `A loja ${loja} foi cadastrada com sucesso!`;
   res.redirect("/");
 });
 
@@ -123,7 +149,7 @@ app.post("/newproduto", (req, res) => {
   const {item, descricao, tamanho, imagem, valor} = req.body;
   const produto = ({item: item, descricao: descricao, tamanho: tamanho, imagem, imagem, valor: valor});
   cadastroProduto.push(produto);
-  message2 = `Produto ${item} cadastrado com sucesso!`
+  message = `Produto ${item} cadastrado com sucesso!`
   res.redirect("/");
 });
 

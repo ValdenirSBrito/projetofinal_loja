@@ -1,4 +1,5 @@
 const database = require("./../database");
+const Sequelize = require("sequelize");
 
 const Loja = database.define("loja", {
   id: {
@@ -11,11 +12,26 @@ const Loja = database.define("loja", {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  descricao: Sequelize.STRING,
+  descricao: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
   imagem: {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  cnpj: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+  },
+  contato: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+  },
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  }, 
 },
 {
   freezeTableName: true,
