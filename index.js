@@ -56,6 +56,10 @@ app.get("/", async (req, res) => {
   });
 });
 
+app.get("/criar", (req, res) => {
+  res.render("criar", {message});
+});
+
 app.post("/criar", async (req, res) => {
   const { nome, descricao, imagem, cnpj, contato, email } = req.body;
 
@@ -110,47 +114,60 @@ app.post("/criar", async (req, res) => {
   }
 })
 
-app.get("/cadastro", (req, res) => {
-  res.render("cadastroLoja", {
-    message: "Cadastre sua loja!",
+app.post("/editar/:id", async (req, res) => {
+  const loja = await Loja.findByPk(req.params.id);
+
+  const { nome, descricao, imagem, cnpj, contato, email } = req.body;
+
+  Loja.nome = nome;
+  Loja.descricao = descricao;
+  Loja.imagem = imagem;
+  Loja.cnpj = cnpj;
+  Loja.contato = contato;
+  Loja.email = email;
+
+  const LojaEditado = await loja.save();
+
+  res.render("editar", {
+    loja: LojaEditado,
+    message: "Loja editado com sucesso!",
   });
 });
 
-app.get("/cadastrocliente", (req, res) => {
-  res.render("cadastroCliente", {
-    message: "Cadastre-se!",
+app.get("/deletar/:id", async (req, res) => {
+  const loja = await Loja.findByPk(req.params.id);
+
+  if (!loja) {
+    res.render("deletar", {
+      loja,
+      message: "Loja não encontrado!",
+    });
+  }
+
+  res.render("deletar", {
+    loja, message
   });
+});
+
+
+app.post("/deletar/:id", async (req, res) => {
+  const loja = await Loja.findByPk(req.params.id);
+
+  if (!loja) {
+    res.render("deletar", {
+      mensagem: "Loja não encontrado!",
+    });
+  }
+
+  await loja.destroy();
+
+  res.redirect("/");
 });
 
 app.get("/quemsomos", (req, res) => {
   res.render("quemSomos");
 });
 
-app.post("/cadastrocliente", (req, res) => {
-  const {nome, sobrenome, cpf, endereco, numero, complemento, bairro, cidade, uf, cep, email} = req.body;
-  const novoCliente = ({nome: nome, sobrenome: sobrenome, cpf: cpf, endereco: endereco, numero: numero, complemento: complemento, bairro: bairro, cidade: cidade, uf: uf, cep: cep, email: email});
-  cadastroCliente.push(novoCliente);
-  message = `Olá, ${nome}! Seu cadastro foi realizado com sucesso! `
-  res.redirect("/");
-});
 
-app.post("/new", (req, res) => {
-  const {loja, categoria, logo, cnpj, contato, email} = req.body;
-  console.log("AQUI ESTÁ:");
-  console.log(req.body)
-  const novaLoja = ({loja: loja, categoria: categoria, logo: logo, cnpj: cnpj, contato: contato, email: email});
-  cadastroLoja.push(novaLoja);
-  message = `A loja ${loja} foi cadastrada com sucesso!`;
-  res.redirect("/");
-});
-
-
-app.post("/newproduto", (req, res) => {
-  const {item, descricao, tamanho, imagem, valor} = req.body;
-  const produto = ({item: item, descricao: descricao, tamanho: tamanho, imagem, imagem, valor: valor});
-  cadastroProduto.push(produto);
-  message = `Produto ${item} cadastrado com sucesso!`
-  res.redirect("/");
-});
 
 app.listen(port, () => console.log(`Servidor rodando em http://localhost:${port}`));
