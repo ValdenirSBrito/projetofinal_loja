@@ -75,5 +75,6 @@ section#perfil {
     display:flex;
     justify-content: center;
     margin: 80px;
+    flex-direction: column;
     
   }
