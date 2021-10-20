@@ -106,17 +106,17 @@ app.get("/detalhes/:id", async (req, res) => { //O id definido aqui na rota é p
 });
 
 app.get("/editar/:id", async (req, res) => {
-  const filme = await Filme.findByPk(req.params.id);
+  const loja = await Loja.findByPk(req.params.id);
 
-  if (!filme) {
+  if (!loja) {
     res.render("editar", {
-      filme,
-      message: "Filme não encontrado!",
+      loja,
+      message: "Loja não encontrado!",
     });
   }
 
   res.render("editar", {
-    filme, message
+    loja, message
   });
 });
 
