@@ -1,45 +1,28 @@
 require('dotenv').config()
 const express = require("express");
-const path = require("path");
 const app = express();
-const port = process.env.PORT || 3000;
-
-let message = "";
-let message1 = "";
-let message2 = "";
-let message3 = "";
-
-const cadastroLoja = [];
-const cadastroProduto = [];
-const quemSomos = [];
-const cadastroCliente = [];
-
+const port = process.env.PORT || 3000; // Const para armanezar a porta do servidor
+const path = require("path");
 
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded());
 
-app.get("/", (req, res) => {
-  setTimeout(() => {
-    message = "";
-  }, 1000);
-  res.render("index", {
-    titulo: "Good Sales",
-    cadastroLoja: cadastroLoja,
-    cadastroProduto: cadastroProduto,
-    quemSomos: quemSomos,
-    message,
-  })
-});
+let message = "";
 
-const loja = require("./models/loja");
+// Esse é o responsável por trazer os dados.
+// Ele vai chamar os módulos da modelo e database para fazer a conexão e trazer
+// o objeto com todas as informações que precisamos.
+// Por isso que em todas as rotas que trabalhamos com nosso DB, vamos nos referir a "Loja"
+// Atenção com a letra maiúscula!!!!!
+const Loja = require("./models/loja");
 
 
 app.get("/", async (req, res) => {
   const loja = await Loja.findAll();
 
   res.render("index", {
-    loja,
+    loja, message
   });
 });
 
@@ -54,55 +37,60 @@ app.get("/cadastro", (req, res) => {
 });
 
 app.post("/criar", async (req, res) => {
-  const { nome, descricao, imagem, cnpj, contato, email } = req.body;
+  const { nome, categoria, imagem, cnpj, contato, email } = req.body;
 
   if (!nome) {
-    res.render("criar", {
-      mensagem: "Nome é obrigatório",
+    res.render("cadastroLoja", {
+      message: "Nome é obrigatório",
     });
   }
 
   if (!imagem) {
-    res.render("criar", {
-      mensagem: "Imagem é obrigatório",
+    res.render("cadastroLoja", {
+      message: "Imagem é obrigatório",
+    });
+  }
+  if (!categoria) {
+    res.render("cadastroLoja", {
+      message: "Imagem é obrigatório",
     });
   }
   if (!cnpj) {
-    res.render("criar", {
-      mensagem: "Nome é obrigatório",
+    res.render("cadastroLoja", {
+      message: "Nome é obrigatório",
     });
   }
 
   if (!contato) {
-    res.render("criar", {
-      mensagem: "Imagem é obrigatório",
+    res.render("cadastroLoja", {
+      message: "Imagem é obrigatório",
     });
   }
 
     if (!email) {
-      res.render("criar", {
-        mensagem: "Imagem é obrigatório",
+      res.render("cadastroLoja", {
+        message: "Imagem é obrigatório",
       });
   }
 
   try {
     const loja = await Loja.create({
       nome,
-      descricao,
+      categoria,
       imagem,
       cnpj,
       contato,
       email,
     });
 
-    res.render("criar", {
+    res.render("cadastroLoja", {
       loja,
     });
   } catch (err) {
     console.log(err);
 
-    res.render("criar", {
-      mensagem: "Ocorreu um erro ao cadastrar o Filme!",
+    res.render("cadastroLoja", {
+      message: "Ocorreu um erro ao cadastrar o Filme!",
     });
   }
 })
@@ -110,14 +98,14 @@ app.post("/criar", async (req, res) => {
 app.post("/editar/:id", async (req, res) => {
   const loja = await Loja.findByPk(req.params.id);
 
-  const { nome, descricao, imagem, cnpj, contato, email } = req.body;
+  const { nome, categoria, imagem, cnpj, contato, email } = req.body;
 
-  Loja.nome = nome;
-  Loja.descricao = descricao;
-  Loja.imagem = imagem;
-  Loja.cnpj = cnpj;
-  Loja.contato = contato;
-  Loja.email = email;
+  loja.nome = nome;
+  loja.categoria = categoria;
+  loja.imagem = imagem;
+  loja.cnpj = cnpj;
+  loja.contato = contato;
+  loja.email = email;
 
   const LojaEditado = await loja.save();
 

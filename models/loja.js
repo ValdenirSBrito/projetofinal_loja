@@ -12,7 +12,7 @@ const Loja = database.define("loja", {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  descricao: {
+  categoria: {
     type: Sequelize.STRING,
     allowNull: false,
   },

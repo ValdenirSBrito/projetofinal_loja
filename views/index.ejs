@@ -49,6 +49,24 @@
             <h2>Good Sales!</h2>
 
         </section>
+
+        <section id="cursos">
+            <h3>Lista de Lojas:</h3>
+            <% loja.forEach(item => { %>
+                <section class="card">
+                    <article id="content">
+                        <ul>
+                            <li>Nome: <%= item.nome %></li>
+                            <li>Descrição: <%= item.descricao %></li>
+                            <a href="/detalhes/<%= item.id %>">
+                                <img src="<%= item.imagem %>" width=200>
+                            </a>
+                        </ul>
+                            <a href = "/editar/<%= item.id %>">Editar</a>
+                    </article>
+                </section>
+            <% }) %> 
+        </section>
     
         <section>
             <form action="/criar" method="GET">
