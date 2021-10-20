@@ -23,7 +23,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: fixed;
+    /* position: fixed; */
     width: 100%;
     z-index: 10;
     
@@ -59,4 +59,21 @@ nav ul li a # {
     transition: 0.5s;
 }
 
-nav ul li a
+/* nav ul li a */
+
+section#perfil {
+    background-color: rgb(255, 68, 230);
+    padding: 250px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  section article {
+    align-items: center;
+    display:flex;
+    justify-content: center;
+    margin: 80px;
+    
+  }
