@@ -95,12 +95,29 @@ app.post("/criar", async (req, res) => {
   }
 })
 
-app.get("/detalhes/:id", (req, res) => {
-  res.render("detalhes", {message});
+app.get("/detalhes/:id", async (req, res) => { //O id definido aqui na rota é passado pelo meu HTML quando clico no link
+  //Pegando uma entrada específica no banco (passada pelo ID) e construindo um objeto 
+  //Aqui é apenas um objeto, não uma lista como na rota principal.
+  const loja = await Loja.findByPk(req.params.id); //Find By PK - Procurar pela PK
+
+  res.render("detalhes", {
+    loja,
+  });
 });
 
-app.get("/editar/:id", (req, res) => {
-  res.render("editar", {message});
+app.get("/editar/:id", async (req, res) => {
+  const filme = await Filme.findByPk(req.params.id);
+
+  if (!filme) {
+    res.render("editar", {
+      filme,
+      message: "Filme não encontrado!",
+    });
+  }
+
+  res.render("editar", {
+    filme, message
+  });
 });
 
 

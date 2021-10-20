@@ -22,11 +22,7 @@
             <li><a href="/quemsomos">Quem Somos</a></li>
         </ul>
     </nav>
-        <% if(message != "") { %>
-            <section id="message">
-                <p><%= message %></p> <span id="close">&times;</span>
-            </section>
-        <% } %>
+        
     </br>
     </br>
     </br>
@@ -50,15 +46,11 @@
 
         </section>
 
-        <!-- <% if(message != "") {  %>
-            <section id="message">
-                <p><%= message %></p> <span id="close">&times;</span>
-            </section>
-        <% }  %> -->
+       
         
         <% if(loja != null) {  %>
         <section id="inscrever">
-            <form action="/deletar/<%= filme.id %>" method="POST">
+            <form action="/deletar/<%= loja.id %>" method="POST">
                 <div>
                     <label for="loja">Nome da Loja: </label>
                     <input type="text" name="nome" id="loja" placeholder="Digite o nome da loja" value="<%= loja.nome %>">
