@@ -51,32 +51,19 @@
         </section>
 
         <section id="cursos">
-            <h3>Lista de Lojas:</h3>
-            <% loja.forEach(item => { %>
+            <h3>Lista de filmes:</h3>
                 <section class="card">
                     <article id="content">
-                        <ul>
-                            <li>Nome: <%= item.nome %></li>
-                            <li>Categoria: <%= item.categoria %></li>
-                            <a href="/detalhes/<%= item.id %>">
-                                <img src="<%= item.imagem %>" width=200>
-                            </a>
-                        </ul>
-                            <a href = "/editar/<%= item.id %>">Editar</a><br>
+                            <ul>
+                                <li>Nome: <%= loja.nome %></li>
+                                <li>Descrição: <%= loja.categoria %></li>
+                                <a href="/">
+                                    <img src="<%= loja.imagem %>" width=200>
+                                </a><br><br>
+                                <a href="/deletar/<%= loja.id %>">DELETAR!</a>
+                            </ul>
                     </article>
                 </section>
-            <% }) %> 
-        </section>
-    
-        <section>
-            <form action="/criar" method="GET">
-                <button type="submit" id="cloja">Cadastrar Loja</button>
-            
-            </form>
-            <form action="/cadastrocliente" method="Post">
-                
-                <button type="submit" id="ccliente">Cadastrar Cliente</button>
-            </form>
         </section>
     </header>
 

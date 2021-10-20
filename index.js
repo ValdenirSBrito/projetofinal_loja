@@ -95,6 +95,15 @@ app.post("/criar", async (req, res) => {
   }
 })
 
+app.get("/detalhes/:id", (req, res) => {
+  res.render("detalhes", {message});
+});
+
+app.get("/editar/:id", (req, res) => {
+  res.render("editar", {message});
+});
+
+
 app.post("/editar/:id", async (req, res) => {
   const loja = await Loja.findByPk(req.params.id);
 
