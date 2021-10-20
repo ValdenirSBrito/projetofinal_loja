@@ -1,4 +1,4 @@
-
+/*
 * {
     background-color: white;
     margin: 0;
@@ -29,7 +29,7 @@ nav {
     /* position: fixed; */
     width: 100%;
     z-index: 10;
-    
+ /*   
 }
 
 nav img {
@@ -63,7 +63,7 @@ nav ul li a  {
 }
 
 /* nav ul li a */
-
+/*
 section .cadastro {
     background-image: url('/public/img/background.jpg');
     background-repeat: no-repeat;
@@ -105,7 +105,7 @@ section .cadastro {
     color: rgb(255, 0, 0);
     transform: scale(1.5);
   } */
-
+/*
 section#perfil {
     background-color: rgb(255, 68, 230);
     padding: 250px;
@@ -123,4 +123,243 @@ section#perfil {
     flex-direction: column;
     
   }
+
+  */
+
+  * {
+    margin: 0;
+    font-family:Arial, Helvetica, sans-serif
+}
+
+body {
+    background-image: url("https://media.istockphoto.com/photos/empty-orange-color-shopping-bag-on-the-yellow-background-copy-space-picture-id1178685067?k=20&m=1178685067&s=612x612&w=0&h=Vzg85rLPoUG2bGorUmCSChFjLS_t6xvpXvPzxFxcE-o="), url("https://img.freepik.com/vetores-gratis/pessoas-fazendo-compras-de-desenhos-animados_18591-38433.jpg?size=626&ext=jpg");
+    background-color: rgb(247, 176, 45);
+    background-repeat: repeat, no-repeat;
+    background-position: center top, center;
+    background-attachment: fixed, relative;
+    background-size: cover, 100%;
+    overflow: auto;
+    position: absolute;
+    text-align: center;
+    scroll-behavior: smooth;
+    height: 100%;
+    width: 100%;
+}
+
+nav {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+
+nav img {
+    width: 3rem;
+    padding-left: 0.5rem;
+}
+
+nav article h1 h4 {
+    color: violet;
+    letter-spacing: 100%;
+    padding-right: 50%;
+    position: absolute;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    padding: 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: violet;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: 0.5s;
+}
+
+nav ul li a:hover {
+    color:orange;
+}
+
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 6rem 3rem 3rem 3rem;
+}
+header section #container {
+    margin: 1rem auto;
+    width: 100%;
+    display: flex;
+}
+
+header ul {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color:black;
+    content: attr();
+    padding: 1.2rem;
+}
+
+header h2 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: black;
+}
+
+header h2:hover {
+    color: red;
+}
+
+header h1 #cdaloja {
+    color: violet;
+    padding: 30rem;
+    width: 100%;
+    justify-content: center;
+}
+
+section #loja h3 {
+    color: violet;
+    padding: 1.3rem;
+    justify-content: center;
+}
+
+section #card {
+    background-color: wheat;
+    padding: 3rem;
+    border-radius: 1.5rem;
+    display: flexbox;
+    justify-content: space-around;
+    width: 50%;
+    position:relative;
+}
+
+section #card:hover {
+    background-color: rgb(196, 142, 247);
+    color: black;
+    border: 0.2rem solid black;
+}
+
+section #cadastro {
+    padding: 3rem;
+    width: 650px;
+    display: flex;
+    justify-content: center;
+}
+
+section #cadastro form {
+    width: 50%;
+}
+
+section #cadastro form div input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.3rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    outline: none;
+    border: none;
+}
+
+section #cadastro form button {
+    border: 1px solid black;
+    background-color: white;
+    color: rgb(243, 117, 243);
+    padding: 1rem;
+    font-size: 0.8vw;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    display: block;
+    margin: auto;
+    margin-top: 2rem;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+    width: 40%;
+}
+
+section #cadastro form button:hover {
+    background-color: black;
+    color: violet;
+    transform: scale(1.1);
+}
+
+section #message {
+    padding: 1.5rem;
+    background-color: red;
+    color: black;
+    position: fixed;
+    top: 3rem;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+span #close {
+    font-size: 2rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+span #close:hover {
+    color:cadetblue;
+    transform: scale(1.5);
+}
+
+
+section #card article #content {
+    background-color: wheat;
+    padding: 3rem;
+    border-radius: 1.5rem;
+    display: flexbox;
+    justify-content: space-around;
+    width: 50%;
+    position:relative;
+}
+
+article #content {
+    width: 50%;
+}
+
+article #content ul {
+    list-style: none;
+}
+
+article #content ul li {
+    padding: 1rem 1rem 1rem 3rem;
+    font-size: 1.2rem;
+}
+
+header section #quemsomos ul {
+    color: black;
+    display: flexbox;
+    justify-content: center;
+    width: auto;
+}
+
+header section #mara ul h5 h6 {
+    display: flexbox;
+    border-radius: 1rem;
+}
+
+header section #valdenir ul h5 h6 {
+    display: flexbox;
+    border-radius: 1rem;
+}
 
