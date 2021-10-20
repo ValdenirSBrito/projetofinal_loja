@@ -172,7 +172,7 @@ app.post("/deletar/:id", async (req, res) => {
 });
 
 app.get("/quemsomos", (req, res) => {
-  res.render("quemSomos");
+  res.render("quemsomos");
 });
 
 app.post("/cadastrocliente", (req, res) => {
