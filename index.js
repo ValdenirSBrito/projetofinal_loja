@@ -52,24 +52,24 @@ app.post("/criar", async (req, res) => {
   }
   if (!categoria) {
     res.render("cadastroLoja", {
-      message: "Imagem é obrigatório",
+      message: "Categoria é obrigatório",
     });
   }
   if (!cnpj) {
     res.render("cadastroLoja", {
-      message: "Nome é obrigatório",
+      message: "Cnpj é obrigatório",
     });
   }
 
   if (!contato) {
     res.render("cadastroLoja", {
-      message: "Imagem é obrigatório",
+      message: "Contato é obrigatório",
     });
   }
 
     if (!email) {
       res.render("cadastroLoja", {
-        message: "Imagem é obrigatório",
+        message: "E-mail é obrigatório",
       });
   }
 
@@ -84,13 +84,14 @@ app.post("/criar", async (req, res) => {
     });
 
     res.render("cadastroLoja", {
-      loja,
+      loja, 
+      message: "Loja Cadastrada com Sucesso!",
     });
   } catch (err) {
     console.log(err);
 
     res.render("cadastroLoja", {
-      message: "Ocorreu um erro ao cadastrar o Filme!",
+      message: "Ocorreu um erro ao cadastrar a Loja!",
     });
   }
 })
