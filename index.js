@@ -44,7 +44,7 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/criar", (req, res) => {
-  res.render("criar", {message});
+  res.render("CadastroLoja", {message});
 });
 
 // app.get("/cadastro", (req, res) => {
