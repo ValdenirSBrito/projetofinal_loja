@@ -43,15 +43,15 @@ app.get("/", async (req, res) => {
   });
 });
 
-// app.get("/criar", (req, res) => {
-//   res.render("criar", {message});
-// });
-
-app.get("/cadastro", (req, res) => {
-  res.render("cadastroLoja", {
-    message: "Cadastre sua loja!",
-  });
+app.get("/criar", (req, res) => {
+  res.render("criar", {message});
 });
+
+// app.get("/cadastro", (req, res) => {
+//   res.render("cadastroLoja", {
+//     message: "Cadastre sua loja!",
+//   });
+// });
 
 app.post("/criar", async (req, res) => {
   const { nome, descricao, imagem, cnpj, contato, email } = req.body;
