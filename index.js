@@ -165,7 +165,7 @@ app.post("/cadastrocliente", (req, res) => {
   const {nome, sobrenome, cpf, endereco, numero, complemento, bairro, cidade, uf, cep, email} = req.body;
   const novoCliente = ({nome: nome, sobrenome: sobrenome, cpf: cpf, endereco: endereco, numero: numero, complemento: complemento, bairro: bairro, cidade: cidade, uf: uf, cep: cep, email: email});
   cadastroCliente.push(novoCliente);
-  message = Olá, ${nome}! Seu cadastro foi realizado com sucesso! 
+  message = 'Olá, ${nome}! Seu cadastro foi realizado com sucesso! ';
   res.redirect("/");
 });
 
