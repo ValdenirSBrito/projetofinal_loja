@@ -47,11 +47,11 @@ app.get("/criar", (req, res) => {
   res.render("cadastroloja", {message});
 });
 
-// app.get("/cadastro", (req, res) => {
-//   res.render("cadastroLoja", {
-//     message: "Cadastre sua loja!",
-//   });
-// });
+app.get("/cadastro", (req, res) => {
+  res.render("cadastroLoja", {
+    message: "Cadastre sua loja!",
+  });
+});
 
 app.post("/criar", async (req, res) => {
   const { nome, descricao, imagem, cnpj, contato, email } = req.body;
@@ -161,6 +161,13 @@ app.get("/quemsomos", (req, res) => {
   res.render("quemSomos");
 });
 
+app.post("/cadastrocliente", (req, res) => {
+  const {nome, sobrenome, cpf, endereco, numero, complemento, bairro, cidade, uf, cep, email} = req.body;
+  const novoCliente = ({nome: nome, sobrenome: sobrenome, cpf: cpf, endereco: endereco, numero: numero, complemento: complemento, bairro: bairro, cidade: cidade, uf: uf, cep: cep, email: email});
+  cadastroCliente.push(novoCliente);
+  message = Olá, ${nome}! Seu cadastro foi realizado com sucesso! 
+  res.redirect("/");
+});
 
 
 app.listen(port, () => console.log(`Servidor rodando em http://localhost:${port}`));
