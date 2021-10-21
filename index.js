@@ -21,6 +21,10 @@ const Loja = require("./models/loja");
 app.get("/", async (req, res) => {
   const loja = await Loja.findAll();
 
+  setTimeout(() => {
+    message = "";
+  }, 1000);
+
   res.render("index", {
     loja, message
   });
