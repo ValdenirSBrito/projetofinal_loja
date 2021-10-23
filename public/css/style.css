@@ -108,7 +108,7 @@ section #loja h3 {
     justify-content: center;
 }
 
-section #card {
+/* section #card {
     background-color: wheat;
     padding: 3rem;
     border-radius: 1.5rem;
@@ -116,7 +116,7 @@ section #card {
     justify-content: space-around;
     width: 50%;
     position:relative;
-}
+} */
 
 section #card:hover {
     background-color: rgb(196, 142, 247);
