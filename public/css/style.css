@@ -115,6 +115,7 @@ section #card {
     justify-content: space-around;
     width: 50%;
     position:relative;
+    cursor: pointer;
 }
 
 section #card:hover {
