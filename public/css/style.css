@@ -322,21 +322,6 @@ span #close:hover {
     transform: scale(1.5);
 }
 
-section#card {
-    width: 20rem;
-    padding: 3rem;
-    box-shadow: 0 0 1rem #00000060;
-    margin: 2rem;
-    border-radius: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    cursor: pointer;
-    transition: transform 0.5s;
-    background-color: #fff;
-    color: #000;
-    text-decoration: none;
-}
 
 section #card article #content {
     background-color: wheat;
